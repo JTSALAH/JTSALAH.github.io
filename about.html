@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FFFFFF;
+            color: #222021;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .black-box {
+            background-color: transparent;
+            background-image: url('topo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: auto;
+            width: 7.6vw; /* Using viewport width units */
+            min-width: 89px; /* Minimum width for the box */
+            max-width: 92px; /* Maximum width for the box */
+            position: fixed;
+            top: 3.5%;
+            left: 2.22vw;
+            margin-bottom: 6%;
+            margin-right: 5%;
+            border-radius: 100px;
+        }
+
+        .navbar {
+            background-color: transparent;
+            padding: 10px;
+            padding-top: 1.2%;
+            border-radius: 0px;
+            position: fixed;
+            bottom: 2%;
+            left: 0;
+            width: 6%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar a {
+            white-space: nowrap;
+            text-align: left;
+            text-decoration: none;
+            color: #404040;
+            padding: 5px 0;
+            font-size: 1rem;
+            margin-left: 4%;
+        }
+
+        .navbar h1 {
+            text-align: left;
+            color: #404040;
+            font-size: 2rem;
+            margin: 5px 0;
+            margin-left: 26%;
+        }
+
+        .navbar h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-left: 26%;
+            color: #404040;
+        }
+
+        .navbar ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            margin-bottom: 10px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            border-radius: 35px;
+            padding: 10px 20px;
+            background-color: #222021;
+            color: #FFFFFF;
+        }
+        .resume-container {
+            margin-left: 7.6vw; /* Same as the width of your navbar */
+            padding: 20px;
+            width: calc(100% - 7.6vw); /* Take up the remaining width */
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin: 0 auto 20px; /* Center the image and add margin below */
+        }
+
+        .resume-text {
+            text-align: left;
+            margin-left: 90vh;
+        }
+
+        .resume-table {
+            width: 100%;
+            text-align: left;
+        }
+
+        .resume-table th, .resume-table td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .resume-container {
+            display: flex; /* Set to flex to align children horizontally */
+            align-items: center; /* Center children vertically */
+            margin-left: 7.6vw;
+            width: calc(100% - 7.6vw);
+        }
+
+        .profile-image {
+            width: 45.5vh;
+            height: 45.5vh;
+            border-radius: 18px;
+            background-size: cover;
+            background-position: center;
+            margin-left: 2.25vw;
+            margin-top: 0.55%;
+            margin-bottom: 0;
+        }
+
+        .resume-text {
+            margin-left: 6.1vh; /* Add some space between image and text */
+            margin-top: 2vh;
+            text-align: left;
+            width: 40vh;
+            font-size: 2vh
+        }
+
+        .text-section {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .date, .company {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .resume-text ul, .resume-text li,
+        .main-content ul, .main-content li,
+        .resume-container ul, .resume-container li {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            font-size: 2vh;
+        }
+
+        .resume-container hr, .main-content hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 20px 0;
+        }
+
+        .resume-container table, .main-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .resume-container th, .resume-container td,
+        .main-content th, .main-content td {
+            padding: 6px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .main-content th {
+            background-color: #D7E8FF;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 4fr 1.5fr;
+            gap: 20px; /* Adjust as needed for spacing between columns */
+            margin-left: 11.05vw;
+            max-width: 85vw;
+            flex-grow: 1;
+        }
+
+        .main-content hr {
+            grid-column: span 4; /* Make the horizontal line span all three columns */
+            margin: 0;
+        }
+
+        .main-content h2 {
+            margin-bottom: 0; /* Adjust as necessary */
+            font-size: 3.2vh;
+        }
+
+        .main-content br {
+            margin-bottom: 0.5vh; /* Adjust as necessary */
+        }
+
+        .big {
+            font-weight: bold; /* Makes the text bold */
+        }
+
+        .small {
+            font-size: smaller; /* Makes the text smaller */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="resume-container">
+        <img src="ProfilePic.jpg" alt="Profile Picture" class="profile-image">
+        <div class="resume-text">
+            <p>M.S - trained environmental data analyst with 3+ years in the academic research space. 
+                I help research labs at Universities like UMass Amherst with scientific data collection, analysis, and publication. 
+                I am passionate about conducting ecological research that reflects the status of biological change 
+                in the context of conservation, restoration, and land management. </p>
+        </div>
+    </div>
+    <div class="main-content">
+
+        <h2>Experience</h2>
+        <li></li>
+        <li></li>
+        <li></li>
+        <hr>
+
+        <li><span class="big">2021</span> <br> <span class="small">cur</span></li>
+        <li><span class="big">Invasive Forest Insects</span> <br> <span class="big">Research Lab</span> <br> <span class="small">Amherst, MA</span></li>
+        <li><span class="big">Insect Conservation Lab Technician</span> <br> <span class="small">
+            Wing morphometric analysis differentiating Winter moths and Bruce spanworms. <br>
+            Imaged and assigned 15 characteristic landmarks on 75 moth wings for analysis in R. <br>
+            Identified 60 moth samples with PCR.       
+        </span></li>
+        <li></li>
+
+        <li><span class="big">2023</span> <br> <span class="small">7mo</span></li>
+        <li><span class="big">Spatial Ecology</span> <br> <span class="big">Research Lab</span> <br> <span class="small">Amherst, MA</span></li>
+        <li><span class="big">Invasive Plant Research Lab Technician</span> <br> <span class="small">
+            Spatial analytics of invasive plants spread via nursery trade in R. <br>
+            Research methodology development and testing. <br>
+            Academic figure design and scripting in R.         
+        </span></li>
+        <li></li>
+
+        <li><span class="big">2022</span> <br> <span class="small">6mo</span></li>
+        <li><span class="big">Bureau of Land Management</span> <br> <span class="small">Roseburg, OR</span></li>
+        <li><span class="big">Invasive Plant Restoration Field Technician</span> <br> <span class="small">
+            Invasive and rare plant field surveys using Avenza Maps and S1. <br>
+            Integrative pest management using herbicide in spray, cut stump, and frill treatments.<br>
+            Oregon native, nonnative, and invasive plant identification using a dichotomous key <br>
+            Seed collection, processing, and restorative planting in fire-disturbed areas.
+        </span></li>
+        <li></li>
+
+        <li><span class="big">2019</span> <br> <span class="small">1yr 10mo</span></li>
+        <li><span class="big">Avian Eco-physiology</span> <br> <span class="big">Research Lab</span> <br> <span class="small">Amherst, MA</span></li>
+        <li><span class="big">Insect & Avian Research Lab Technician</span> <br> <span class="small">
+            Collected moth fat, lean, and water mass data using QMR and Soxhlet Lipid Extraction. <br>
+            Animal care for 20 Gray Catbirds undergoing photoperiod manipulation research. <br>
+            Presented at the 25th Massachusetts Undergraduate Research Conference.            
+        </span></li>
+        <li></li>
+
+        <li><span class="big">2019</span> <br> <span class="small">3mo</span></li>
+        <li><span class="big">The Institute for</span> <br> <span class="big">Bird Populations</span> <br> <span class="small">Hadley, MA</span></li>
+        <li><span class="big">Assistant Bird Bander & Scribe</span> <br> <span class="small">
+            Identification and handling of caught bird species. <br>
+            Scribed over 50 real time bander’s reports on caught bird characteristics.                      
+        </span></li>
+        <li></li>
+
+        <h2>Teaching</h2>
+        <hr>
+
+        <li><span class="big">2021</span> <br> <span class="small">4mo</span></li>
+        <li id="education" style="font-weight: bold;">University of <br> Massachusetts, <br> Amherst <br> <span class="small" style="font-weight: normal;">Amherst, MA</span></li>
+        <li><span class="big">Environmental Toxicology & Chemistry Teaching Assistant</span> <br> <span class="small">
+            Hosted review sessions and office hours to help students learn class material.
+        </span></li>
+        <li></li>
+
+        <li><span class="big">2019</span> <br> <span class="small">4mo</span></li>
+        <li id="education" style="font-weight: bold;">University of <br> Massachusetts, <br> Amherst <br> <span class="small" style="font-weight: normal;">Amherst, MA</span></li>
+        <li><span class="big">Invasive Plant Research Lab Technician</span> <br> <span class="small">
+            Administered labs, answered student questions, graded midterm exams and final projects, <br>
+            and hosted office hours and help sessions      
+        </span></li>
+        <li></li>
+
+        <h2>Education</h2>
+        <hr>
+
+        <li style="font-weight: bold;">2023</li>
+        <li id="education" style="font-weight: bold;">University of <br> Massachusetts, <br> Amherst</li>
+        <li><span class="big">Masters of Science in Geographical Information Science & Technology</span> <br> <span class="small">
+            Designed research methodologies for spatial biostatistics of invasive plants and insects.
+        </span></li>
+        <li></li>
+
+        <li style="font-weight: bold;">2022</li>
+        <li id="education" style="font-weight: bold;">University of <br> Massachusetts, <br> Amherst</li>
+        <li><span class="big">Bachelors of Science in Environmental Science</span> <br> <span class="small">
+            Developed skills in environmental consulting and site assessment while exploring <br> interdisciplinary studies.
+        </span></li>
+        <li></li>
+
+        <li style="font-weight: bold;">2022</li>
+        <li id="education" style="font-weight: bold;">University of <br> Massachusetts, <br> Amherst</li>
+        <li><span class="big">Bachelors of Science in Biology</span> <br> <span class="small">
+            Researched the physiology of moths, and methods to identify identical species taxonomically.
+        </span></li>
+        <li></li>
+
+        <h2>Skills</h2>
+        <h2>Credentials</h2>
+        <hr>
+        <li><span class="big">Software</span> 
+            <br> <span class="small">Adobe Creative Suite</span>
+            <br> <span class="small">ArcGIS Pro + Online</span>
+            <br> <span class="small">Agisoft Metashape</span>
+            <br> <span class="small">ESRI Mobile Applications </span></li></li>
+
+        <li><span class="big">Certifications</span> 
+            <br> <span class="small">Game of Logging | Levels 1 & 2</span>
+            <br> <span class="small">NOLS Wilderness First Aid</span>
+            <br> <span class="small">OSHA HAZWOPER 40-hr</span>
+            <br> <span class="small">S130/190 Wildland Firefighter</span></li></li>
+        <li></li>
+        <li></li>
+
+        <li><span class="big">Programming</span> 
+            <br> <span class="small">Python, R, SQL</span>
+            <br> <span class="small">Javascript</span></li>
+
+        <li><span class="big">Licenses</span> 
+            <br> <span class="small">MA Class D Drivers License</span>
+            <br> <span class="small">Oregon Public Pesticide Applicators License</span></li>
+        <li></li>
+        <li></li>
+
+        <li style="margin-bottom: 4.1vh;"><span class="big">Markdown</span> 
+            <br> <span class="small">HTML, CSS, LaTeX</span></li>
+
+</li>
+    </div>
+    <iframe id="map-display" style="display: none;"></iframe>
+    <nav class="navbar">
+        <div class="black-box"></div>
+        <h1>James</h1>
+        <h1>Tsalah</h1>
+        <a style="font-size: 0.75rem; margin-left: 31%; color: #404040;">Sunderland, MA</a>
+        <br>
+        <br>
+        <h2 style="font-size: 1.5rem;">Portfolio</h2>
+        <ul style="margin-left: 35%;">
+            <li><a href="#Projects">Projects</a></li>
+            <li><a href="#Research">Research</a></li>
+            <li><a href="#Personal">Personal</a></li>
+        </ul>
+        <h2 style="font-size: 1.5rem;">About</h2>
+        <ul style="margin-left: 35%;">
+            <li><a href="#CV">CV</a></li>
+            <li><a href="https://github.com/JTSALAH" target="_blank">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/james-tsalah/" target="_blank">Linkedin</a></li>
+        </ul>
+    </nav>
+    <script>
+        function adjustBlackBoxHeight() {
+            // Get the navbar height
+            var navbarHeight = document.querySelector(".navbar").offsetHeight;
+
+            // Calculate the new height for the black box
+            var viewportHeight = window.innerHeight;
+            var gap = 0.014 * viewportHeight; // 2% gap
+            var newHeight = viewportHeight - navbarHeight - (0.03 * viewportHeight) - gap; // 3% from the top and added 2% gap
+
+            // Set the new height to the black box
+            document.querySelector(".black-box").style.height = newHeight + "px";
+        }
+        // Adjust height on page load
+        window.onload = adjustBlackBoxHeight;
+    
+        // Adjust height on window resize or zoom
+        window.onresize = adjustBlackBoxHeight;
+    </script>
+</html>
