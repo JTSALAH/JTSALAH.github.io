@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FFFFFF;
+            color: #222021;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .black-box {
+            background-color: transparent;
+            background-image: url('https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/topo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: auto;
+            width: 7.6vw; /* Using viewport width units */
+            min-width: 89px; /* Minimum width for the box */
+            max-width: 92px; /* Maximum width for the box */
+            position: fixed;
+            top: 3.5%;
+            left: 47px;
+            margin-bottom: 6%;
+            margin-right: 5%;
+            border-radius: 100px;
+        }
+
+        .navbar {
+            background-color: transparent;
+            padding: 10px;
+            padding-top: 1.2%;
+            border-radius: 0px;
+            position: fixed;
+            bottom: 2%;
+            left: 0px;
+            width: 6%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar a {
+            white-space: nowrap;
+            text-align: left;
+            text-decoration: none;
+            color: #404040;
+            padding: 5px;
+            font-size: 1rem;
+            margin-left: 42px;
+        }
+
+        .navbar h1 {
+            text-align: left;
+            color: #404040;
+            font-size: 2rem;
+            margin: 5px;
+            margin-left: 30px;
+        }
+
+        .navbar h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-left: 30px;
+            color: #404040;
+        }
+
+        .navbar ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0px;
+        }
+
+        .navbar ul li {
+            margin-bottom: 10px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            border-radius: 35px;
+            padding: 10px 20px;
+            background-color: #222021;
+            color: #FFFFFF;
+        }
+
+        .maps {
+            position: absolute;
+            top: 3.1%;
+            left: 190px;
+            right: 2%;
+            max-width: calc(100% - 225px);
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            row-gap: 1%;
+            column-gap: 2%;
+            background-color: #FFFFFF;
+            border-radius: 0px;
+        }
+        
+         /* There are 6 columns in the grid, for two per row span=3, for three per row span=2. */
+         /* Must adjust n values as you add and remove items*/
+        .map-container:nth-child(-n+9) {
+            grid-column: span 2;
+        }
+
+        .map-container:nth-child(n+7) {
+            grid-column: span 2;
+        }
+
+        .map-container:nth-child(n+10) {
+            grid-column: span 3;
+        }
+
+        .map-container:nth-child(n+15) {
+            grid-column: span 3;
+            margin-bottom: 4%;
+        }
+
+                /* Adjust for smaller screens */
+         @media (max-width: 1500px) {
+            .maps {
+                grid-template-columns: repeat(4, 1fr); /* Default to two columns */
+            }
+            .map-container:nth-child(-n+9){
+                grid-column: span 2;
+            }
+            .map-container:nth-child(9){
+                grid-column: span 4;
+            }
+            .map-container:nth-child(n+10) {
+                grid-column: span 2;
+            }
+            .map-container:nth-child(n+15) {
+                margin-bottom: 4%;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .map-container:nth-child(-n+9) {
+                grid-column: span 6;
+            }
+            .map-container:nth-child(9) {
+                margin-bottom: 53%
+            }
+            .map-container:nth-child(n+10) {
+                display: none;
+            }
+        }
+
+        .maps iframe {
+            width: 100%;
+            height: 45.5vh;
+            border: none;
+            border-radius: 18px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+
+        iframe#map-display {
+            margin-left: 220px;
+            width: calc(100% - 220px);
+            height: 100vh;
+            border: none;
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+        }
+
+        .map-container .top-left-label,
+        .map-container .top-right-label {
+            color: #222021;
+            padding: 2px 5px;
+            border-radius: 4px;
+            background-color: transparent;
+        }
+
+        .map-container .top-left-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .map-container .top-right-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .map-container:hover iframe {
+            opacity: 0.3;
+        }
+
+        .map-container .hover-content {
+            position: absolute;
+            top: 7%; 
+            left: 1.2%; 
+            width: auto;  
+            height: auto; 
+            padding: 10px; 
+            display: flex;
+            align-items: start; 
+            justify-content: start;  
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 8px;  /* Optional: Added border radius for better aesthetics */
+            max-width: 70%;  /* Optional: Limit width for better appearance */
+            word-wrap: break-word; /* Optional: Ensure content breaks if too long */
+        }
+
+        .map-container:hover .hover-content {
+            opacity: 1;
+        }
+        
+        .maps img {
+            display: block;
+            width: 100%;
+            height: 45.5vh;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        /* Circular Image */
+        .map-container .circular-image {
+            position: absolute;
+            top: 12.5vh;
+            left: 0.75vw;
+            width: 15vh;
+            height: 15vh;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .map-container .circular-image img {
+            width: 100%;
+            height: 100%;
+            object-fit:fill;
+        }
+
+        /* Hyperlinked Text below the Circular Image */
+        .map-container .link-text {
+            position: absolute;
+            top: 16.4vw; /* Adjust based on circular image's height + margin */
+            left: 1.5vw;
+            text-decoration: none;
+            color: #C7C6C1; /* You can change the color if needed */
+        }
+
+        /* Centered text to the right of the circular image with underline */
+        .map-container .centered-text {
+            position: absolute;
+            left: 13.5vw; /* Adjust based on circular image's width + margin */
+            top: 13vh;
+            font-size: 1.8em;
+            white-space: nowrap;
+        }
+
+        /* Text below the underline text */
+        .map-container .text-below {
+            position: absolute;
+            left: 13.5vw; /* Adjust based on circular image's width + margin */
+            right: 2vw;
+            top: 17vh; /* Adjust based on the above text's height + margin */
+            max-width: 70%; /* to ensure the text doesn't overflow the container */
+            font-size: 1.2rem;
+            overflow: visible;
+        }
+
+        .map-container .link-image {
+            position: absolute;
+            bottom: 1vh;
+            right: 1vh;
+            width: 8vw; /* Adjust as needed */
+            height: 8vh; /* Adjust as needed */
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 50%; /* Optional: for rounded corners */
+        }
+
+        .map-container:hover .link-image {
+            opacity: 1;
+        }
+
+    
+        /* <a href="https://elkintonlab.wordpress.com/" target="_blank" class="link-text">Lab Website</a> */
+        /* <a href="https://www.alexandergerson.com/" target="_blank" class="link-text">Lab Website</a>  */
+        /* <a href="https://people.umass.edu/bethanyb/" target="_blank" class="link-text">Spatial Ecology Website</a> */
+    </style>
+</head>
+
+<body>
+    <a href="#" id="Projects"></a>
+    <div class="maps">
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/SDM.png" alt="SDM">
+            <div class="top-left-label" style="color: #C7C6C1;">Species Distribution Modeling</div>
+            <div class="top-right-label" style="color: #C7C6C1;">Analysis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">
+                Predicting where invasive species are likely to spread is an important step in applying preventative measures. I utilized R and GBIF to download data and run optimized MaxEnt models for multiple species of interest.
+            </div>
+            <a href="https://github.com/JTSALAH/Automated-GBIF-Species-Distribution-Modeling" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+        </div>
+        
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/HotSpot.png" title="HSA">
+            <div class="top-left-label" style="color: #C7C6C1;">Hotspot Analysis Animation</div>
+            <div class="top-right-label" style="color: #C7C6C1;">Analysis/Vis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">
+                Invasive species spread quickly throughout introduced regions, so visualizing a species' spread over time is an important way to gauge their threat. 
+                I looked to utilize EDDMaps in order to visualize citizen science reports of invasive occurences.
+            </div>
+            <a href="https://github.com/JTSALAH/EDDMaps-HotSpot-Animation" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/TWI.png" title="Hydrology">
+            <div class="top-left-label" style="color: #C7C6C1;">Analytical Hydrology</div>
+            <div class="top-right-label" style="color: #C7C6C1;">Analysis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">
+                A lot of hydrological information can be derived from a DEM, so I decided to automate a typical exploratory analysis of the White Mountains, NH using R and GRASS GIS.
+            </div>
+            <a href="https://github.com/JTSALAH/R-GRASS-Hydrological-Analysis" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+        </div>
+        
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/3D.png" title="3DEM">
+            <div class="top-left-label">3DEM</div>
+            <div class="top-right-label">UAS/Vis</div>
+            <div class="hover-content">
+                Visualize your terrain<br>
+                in 3D! I looked to <br>
+                render rasters <br>
+                with R using <br>
+                raytracing <br>
+                to create <br>
+                images <br>
+                &nbsp;&nbsp; & <br>
+                GIFs! <br>
+            </div>
+            <a href="https://github.com/JTSALAH/DEM-Rayshader-Visualization" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/TTID.png" title="TTID">
+            <div class="top-left-label">Aerial Treetop & Canopy Identification</div>
+            <div class="top-right-label">UAS</div>
+            <div class="hover-content">Forest surveys can be difficult to impossible in large areas, so I scripted a method to identify treetops and canopies from drone flights in R!</div>
+            <a href="https://github.com/JTSALAH/Treetop-Identification-and-3D-Visualization" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/LSM.png" alt="LSM">
+            <div class="top-left-label">Ecosystem Health Assessment with Landscape Metrics</div>
+            <div class="top-right-label">Analysis</div>
+            <div class="hover-content" style="background-color:#89CFEF; backdrop-filter: blur(25px)">We can assess the health and fragmentation of ecosystems by calculating their landscape metrics with land cover classification data!</div>
+            <a href="https://github.com/JTSALAH/Batch-Landscape-Metrics" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container" id="Personal">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/PG.png" alt="LSM">
+            <div class="top-left-label">Port Gamble, WA</div>
+            <div class="top-right-label">Vis</div>
+            <a href="https://github.com/JTSALAH/Python-DEM-to-Point-Cloud" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/Astoria.png" alt="LSM">
+            <div class="top-left-label">Astoria, OR</div>
+            <div class="top-right-label">Vis</div>
+            <a href="https://github.com/JTSALAH/Python-DEM-to-Point-Cloud" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/PR.png" alt="LSM">
+            <div class="top-left-label">Point Reyes, CA</div>
+            <div class="top-right-label">Vis</div>
+            <a href="https://github.com/JTSALAH/Python-DEM-to-Point-Cloud" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container" id="Research">
+            <div class="circular-image">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/Plant_Icon.JPG" alt="SDM">
+            </div>
+            <div class="centered-text">Spatial Ecology</div>
+            <div class="text-below">
+                I conducted a spatial analysis on historic nursery sales records in order to describe the ability of nurseries to act as propagule pressure for invasive plants. 
+                For this project I developed research methodologies, performed analytical testing, and collaboratively authored a paper reporting our findings.  
+            </div>
+            <a href="your-link-here" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+        </div>    
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/Plants.png" alt="SDM">
+        </div>
+
+        <div class="map-container">
+            <div class="circular-image">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/Moth_Icon.JPG" alt="SDM">
+            </div>
+            <div class="centered-text">Invasive Forest Insects</div>
+            <div class="text-below">
+                In researching invasive biocontrols, I scripted automated species distribution modeling for 50+ species in the invaded regions of the United States. 
+                Additionally, in a previous study we conducted an analysis to taxonomically distinguish the invasive 
+                Winter moth from the native Bruce spanworm moth through wing morphology.
+            </div>
+        </div>    
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/SDM_Collage.png" alt="SDM">
+        </div>
+
+        <div class="map-container">
+            <div class="circular-image">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/Bird_Icon.JPG" alt="SDM">
+            </div>
+            <div class="centered-text">Avian Eco-physiology</div>
+            <div class="text-below">
+                I researched the metabolic physiology of Manduca sexta and Bombyx mori moths to better understand their metamorphosis.
+                In addition to insect research I was a primary animal care giver for 20 Gray Catbirds 
+                undergoing photoperiod manipulation research, and banded birds during the summer for the Institute for Bird Populations.
+            </div>
+        </div>    
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/Birds.png" alt="SDM">
+        </div>
+    
+    <iframe id="map-display" style="display: none;"></iframe>
+    <nav class="navbar">
+        <div class="black-box"></div>
+        <h1>James</h1>
+        <h1>Tsalah</h1>
+        <a style="font-size: 0.75rem; color: #404040; margin-left: 31px">Sunderland, MA</a>
+        <br>
+        <br>
+        <h2 style="font-size: 1.5rem;">Portfolio</h2>
+        <ul>
+            <li><a href="#Projects">Projects</a></li>
+            <li><a href="#Personal">Personal</a></li>
+            <li><a href="#Research">Research</a></li>
+        </ul>
+        <h2 style="font-size: 1.5rem;">About</h2>
+        <ul>
+            <li><a href="./about">CV</a></li>
+            <li><a href="https://github.com/JTSALAH" target="_blank">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/james-tsalah/" target="_blank">Linkedin</a></li>
+        </ul>
+    </nav>
+    <script>
+        function adjustBlackBoxHeight() {
+            // Get the navbar height
+            var navbarHeight = document.querySelector(".navbar").offsetHeight;
+
+            // Calculate the new height for the black box
+            var viewportHeight = window.innerHeight;
+            var gap = 0.035 * viewportHeight; // 2% gap
+            var newHeight = viewportHeight - navbarHeight - (0.03 * viewportHeight) - gap; // 3% from the top and added 2% gap
+
+            // Set the new height to the black box
+            document.querySelector(".black-box").style.height = newHeight + "px";
+        }
+        // Adjust height on page load
+        window.onload = adjustBlackBoxHeight;
+    
+        // Adjust height on window resize or zoom
+        window.onresize = adjustBlackBoxHeight;
+    </script>
+</html>
