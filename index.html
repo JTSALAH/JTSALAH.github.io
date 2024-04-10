@@ -117,17 +117,17 @@
             grid-column: span 2;
         }
 
-        .map-container:nth-child(n+10) {
+        .map-container:nth-child(n+13) {
             grid-column: span 3;
         }
 
-        .map-container:nth-child(n+15) {
+        .map-container:nth-child(n+18) {
             grid-column: span 3;
             margin-bottom: 4%;
         }
 
                 /* Adjust for smaller screens */
-         @media (max-width: 1500px) {
+         @media (max-width: 1600px) {
             .maps {
                 grid-template-columns: repeat(4, 1fr); /* Default to two columns */
             }
@@ -137,10 +137,13 @@
             .map-container:nth-child(9){
                 grid-column: span 4;
             }
-            .map-container:nth-child(n+10) {
+            .map-container:nth-child(12){
+                grid-column: span 4;
+            }
+            .map-container:nth-child(n+13) {
                 grid-column: span 2;
             }
-            .map-container:nth-child(n+15) {
+            .map-container:nth-child(n+18) {
                 margin-bottom: 4%;
             }
         }
@@ -383,6 +386,36 @@
             <div class="top-right-label">Analysis</div>
             <div class="hover-content" style="background-color:#89CFEF; backdrop-filter: blur(25px)">We can assess the health and fragmentation of ecosystems by calculating their landscape metrics with land cover classification data!</div>
             <a href="https://github.com/JTSALAH/Batch-Landscape-Metrics" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/R-Point-Pattern-Analytics/main/IMAGES/ppp_Density.png" alt="LSM">
+            <div class="top-left-label" style="color: #C7C6C1;">Point Pattern Analytics</div>
+            <div class="top-right-label" style="color: #C7C6C1;">Analysis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">Assessing landscape distributions of points is an important part of any analysis, so I scripted a method to mathematically determine clustering and dispersion in point datasets!</div>
+            <a href="https://github.com/JTSALAH/R-Point-Pattern-Analytics/tree/main" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/R-Spatial-Autocorrelation-Analytics/main/Example_Output/KrigePIC.png" alt="LSM">
+            <div class="top-left-label" style="color: #C7C6C1;">Kriging, Variograms, & Correlograms</div>
+            <div class="top-right-label" style="color: #C7C6C1;">Analysis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">We can assess the health and fragmentation of ecosystems by calculating their landscape metrics with land cover classification data!</div>
+            <a href="https://github.com/JTSALAH/R-Spatial-Autocorrelation-Analytics/tree/main" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/Habitat-Suitability-Modeling/main/IMAGES/HSM.png" alt="LSM">
+            <div class="top-left-label">Habitat Suitability Modeling</div>
+            <div class="top-right-label">Analysis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">A Habitat Suitability Model (HSM) is a tool used to predict the suitability of a given habitat for a particular species, based on specific environmental conditions and the species' requirements. These models integrate various factors, including climate, vegetation type, availability of water, and presence of predators or competitors to estimate how well a particular area supports the target species.</div>
+            <a href="https://github.com/JTSALAH/Habitat-Suitability-Modeling/tree/main" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
         </div>
