@@ -25,9 +25,9 @@
             background-repeat: no-repeat;
             background-position: center;
             height: auto;
-            width: 7.6vw; /* Using viewport width units */
-            min-width: 89px; /* Minimum width for the box */
-            max-width: 92px; /* Maximum width for the box */
+            width: 7.6vw;
+            min-width: 89px; 
+            max-width: 92px; 
             position: fixed;
             top: 3.5%;
             left: 47px;
@@ -117,45 +117,44 @@
             grid-column: span 2;
         }
 
-        .map-container:nth-child(n+13) {
+        /*  .map-container:nth-child(n+13) {
             grid-column: span 3;
-        }
+        }*/
 
-        .map-container:nth-child(n+18) {
+        .map-container:nth-child(n+16) {
             grid-column: span 3;
             margin-bottom: 4%;
         }
 
-                /* Adjust for smaller screens */
-         @media (max-width: 1600px) {
+        /* Adjust for smaller screens */
+         @media (max-width: 1550px) {
             .maps {
-                grid-template-columns: repeat(4, 1fr); /* Default to two columns */
+                grid-template-columns: repeat(4, 1fr); 
             }
-            .map-container:nth-child(-n+9){
+            .map-container:nth-child(-n+14){
                 grid-column: span 2;
             }
-            .map-container:nth-child(9){
+            
+            .map-container:nth-child(15){
                 grid-column: span 4;
             }
-            .map-container:nth-child(12){
-                grid-column: span 4;
-            }
-            .map-container:nth-child(n+13) {
+
+            .map-container:nth-child(n+16) {
                 grid-column: span 2;
             }
-            .map-container:nth-child(n+18) {
+            .map-container:nth-child(n+214) {
                 margin-bottom: 4%;
             }
         }
 
         @media (max-width: 1100px) {
-            .map-container:nth-child(-n+9) {
+            .map-container:nth-child(-n+16) {
                 grid-column: span 6;
             }
-            .map-container:nth-child(9) {
+            .map-container:nth-child(16) {
                 margin-bottom: 53%
             }
-            .map-container:nth-child(n+10) {
+            .map-container:nth-child(n+16) {
                 display: none;
             }
             .black-box {
@@ -225,9 +224,9 @@
             justify-content: start;  
             opacity: 0;
             transition: opacity 0.3s;
-            border-radius: 8px;  /* Optional: Added border radius for better aesthetics */
-            max-width: 70%;  /* Optional: Limit width for better appearance */
-            word-wrap: break-word; /* Optional: Ensure content breaks if too long */
+            border-radius: 8px;  
+            max-width: 70%;  
+            word-wrap: break-word; 
         }
 
         .map-container:hover .hover-content {
@@ -248,7 +247,8 @@
             top: 12.5vh;
             left: 0.75vw;
             width: 15vh;
-            height: 15vh;
+            height: 10vw;
+            width: 10vw;
             border-radius: 50%;
             overflow: hidden;
         }
@@ -262,16 +262,16 @@
         /* Hyperlinked Text below the Circular Image */
         .map-container .link-text {
             position: absolute;
-            top: 16.4vw; /* Adjust based on circular image's height + margin */
+            top: 16.4vw;
             left: 1.5vw;
             text-decoration: none;
-            color: #C7C6C1; /* You can change the color if needed */
+            color: #C7C6C1; 
         }
 
         /* Centered text to the right of the circular image with underline */
         .map-container .centered-text {
             position: absolute;
-            left: 13.5vw; /* Adjust based on circular image's width + margin */
+            left: 13.5vw; 
             top: 13vh;
             font-size: 1.8em;
             white-space: nowrap;
@@ -280,10 +280,10 @@
         /* Text below the underline text */
         .map-container .text-below {
             position: absolute;
-            left: 13.5vw; /* Adjust based on circular image's width + margin */
+            left: 13.5vw;
             right: 2vw;
-            top: 17vh; /* Adjust based on the above text's height + margin */
-            max-width: 70%; /* to ensure the text doesn't overflow the container */
+            top: 17vh; 
+            max-width: 70%; 
             font-size: 1.2rem;
             overflow: visible;
         }
@@ -292,21 +292,17 @@
             position: absolute;
             bottom: 1vh;
             right: 1vh;
-            width: 80px; /* Adjust as needed */
-            height: 80px; /* Adjust as needed */
+            width: 80px;
+            height: 80px; 
             opacity: 0;
             transition: opacity 0.3s;
-            border-radius: 50%; /* Optional: for rounded corners */
+            border-radius: 50%; 
         }
 
         .map-container:hover .link-image {
             opacity: 1;
         }
 
-    
-        /* <a href="https://elkintonlab.wordpress.com/" target="_blank" class="link-text">Lab Website</a> */
-        /* <a href="https://www.alexandergerson.com/" target="_blank" class="link-text">Lab Website</a>  */
-        /* <a href="https://people.umass.edu/bethanyb/" target="_blank" class="link-text">Spatial Ecology Website</a> */
     </style>
 </head>
 
@@ -358,15 +354,12 @@
         </div>
 
         <div class="map-container">
-            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/HotSpot.png" title="HSA">
-            <div class="top-left-label" style="color: #C7C6C1;">Hotspot Analysis Animation</div>
-            <div class="top-right-label" style="color: #C7C6C1;">Analysis/Vis</div>
-            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">
-                Invasive species spread quickly throughout introduced regions, so visualizing a species' spread over time is an important way to gauge their threat. 
-                I looked to utilize EDDMaps in order to visualize citizen science reports of invasive occurences.
-            </div>
-            <a href="https://github.com/JTSALAH/EDDMaps-HotSpot-Animation" target="_blank">
-                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            <img src="https://raw.githubusercontent.com/JTSALAH/Thrush-Spatial-Regression-Modeling/main/Images/SRM.png" title="SRM">
+            <div class="top-left-label" style="color: #C7C6C1">Thrush Spatial Regression Modeling</div>
+            <div class="top-right-label" style="color: #C7C6C1">Analysis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">Spatial regression modeling is an important part of any spatial ecology project, and is often hindered by assumption violating autocorrelation. I looked to solve this in a Thrush dataset by accounting for spatial autocorrelation through various methods, including trend surface modeling and eigenvector mapping!</div>
+            <a href="https://github.com/JTSALAH/Thrush-Spatial-Regression-Modeling/tree/main" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
         </div>
 
@@ -391,12 +384,48 @@
         </div>
 
         <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/UMASS_LOGO.png" title="TTID">
+            <div class="top-left-label">Spatial Data Analysis in R - Course Materials</div>
+            <div class="top-right-label">Teaching</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #881C1C;">This is the coursework I developed for the graduate level course at the University of Massachusetts, Amherst. The course focuses on coding skills, and how to apply them to conduct non-trivial spatial analytics in R. The first half of the semester focuses on R fundamentals and how to apply it to spatial projects, while in the second half of the semester we take the time to dive into specific spatial analytics and how students can use them to conduct their own final projects!</div>
+            <a href="https://raw.githubusercontent.com/JTSALAH/Thrush-Spatial-Regression-Modeling/main/Images/SRM.png" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/Restoration-Site-Selection-Shiny-App/main/Images/ParcelSelection.png" title="rshiny">
+            <div class="top-left-label" style="color: #C7C6C1">Restoration Site Selection RShiny App</div>
+            <div class="top-right-label" style="color: #C7C6C1">Shiny App</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">By using the Analytical Hierarchy Process (AHP) in tandem with landscape metrics, we can determine which site is best suited for restoration! I created an interactive site selection shiny app to see which sites are best as our priorities change! </div>
+            <a href="https://github.com/JTSALAH/Restoration-Site-Selection-Shiny-App" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+        <div class="map-container">
             <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/TTID.png" title="TTID">
             <div class="top-left-label">Aerial Treetop & Canopy Identification</div>
             <div class="top-right-label">UAS</div>
             <div class="hover-content">Forest surveys can be difficult to impossible in large areas, so I scripted a method to identify treetops and canopies from drone flights in R!</div>
             <a href="https://github.com/JTSALAH/Treetop-Identification-and-3D-Visualization" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
+            </a>
+        </div>
+
+
+
+        <div class="map-container">
+            <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/HotSpot.png" title="HSA">
+            <div class="top-left-label" style="color: #C7C6C1;">Hotspot Analysis Animation</div>
+            <div class="top-right-label" style="color: #C7C6C1;">Analysis/Vis</div>
+            <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">
+                Invasive species spread quickly throughout introduced regions, so visualizing a species' spread over time is an important way to gauge their threat. 
+                I looked to utilize EDDMaps in order to visualize citizen science reports of invasive occurences.
+            </div>
+            <a href="https://github.com/JTSALAH/EDDMaps-HotSpot-Animation" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
             </a>
         </div>
 
@@ -419,6 +448,7 @@
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
         </div>
+
 
 
 
