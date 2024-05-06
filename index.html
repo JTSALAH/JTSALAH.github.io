@@ -303,6 +303,21 @@
             opacity: 1;
         }
 
+        .map-container .link-app {
+            position: absolute;
+            bottom: 1vh;
+            left: 1vh;
+            width: 80px;
+            height: 80px; 
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 50%; 
+        }
+
+        .map-container:hover .link-app {
+            opacity: 1;
+        }
+
     </style>
 </head>
 
@@ -375,7 +390,7 @@
 
         <div class="map-container">
             <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/LSM.png" alt="LSM">
-            <div class="top-left-label">Ecosystem Health Assessment with LSM</div>
+            <div class="top-left-label">Spatial Ecosystem Health Assessment</div>
             <div class="top-right-label">Analysis</div>
             <div class="hover-content" style="background-color:#89CFEF; backdrop-filter: blur(25px)">We can assess the health and fragmentation of ecosystems by calculating their landscape metrics with land cover classification data!</div>
             <a href="https://github.com/JTSALAH/Batch-Landscape-Metrics" target="_blank">
@@ -401,6 +416,9 @@
             <div class="hover-content" style="color: #C7C6C1; background-color: #222021;">By using the Analytical Hierarchy Process (AHP) in tandem with landscape metrics, we can determine which site is best suited for restoration! I created an interactive site selection shiny app to see which sites are best as our priorities change! </div>
             <a href="https://github.com/JTSALAH/Restoration-Site-Selection-Shiny-App" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
+            </a>
+            <a href="https://jtsalah.shinyapps.io/Restoration-Site-Selection-AHP/" target="_blank">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/OPENICON.png" alt="Link" class="link-app">
             </a>
         </div>
 
