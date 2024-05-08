@@ -109,6 +109,7 @@
         
          /* There are 6 columns in the grid, for two per row span=3, for three per row span=2. */
          /* Must adjust n values as you add and remove items*/
+         /* Must +1 to transition between 3 per row to 2 per row for popupContainer*/
         .map-container:nth-child(-n+9) {
             grid-column: span 2;
         }
@@ -117,11 +118,11 @@
             grid-column: span 2;
         }
 
-        .map-container:nth-child(n+16) {
+        .map-container:nth-child(n+17) {
             grid-column: span 3;
         }
 
-        .map-container:nth-child(n+21) {
+        .map-container:nth-child(n+22) {
             grid-column: span 3;
             margin-bottom: 4%;
         }
@@ -303,7 +304,7 @@
             opacity: 1;
         }
 
-        .map-container .link-app {
+        .map-container .link-icon {
             position: absolute;
             bottom: 1vh;
             left: 1vh;
@@ -312,11 +313,51 @@
             opacity: 0;
             transition: opacity 0.3s;
             border-radius: 50%; 
+            cursor: pointer;
         }
 
-        .map-container:hover .link-app {
+        .map-container:hover .link-icon {
             opacity: 1;
         }
+
+        #popupContainer.hidden {
+            display: none;
+        }
+
+        #popupContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* High z-index to ensure it's on top */
+        }
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001; /* Ensuring overlay covers everything below the popup container */
+        }
+
+        .popupContent {
+            position: relative;
+            max-width: 100vw;  /* 80% of the viewport width */
+            max-height: 100vh; /* 80% of the viewport height */
+            width: auto;      /* Maintain aspect ratio */
+            height: auto;     /* Maintain aspect ratio */
+            z-index: 1002; /* Highest z-index to ensure content is above the overlay */
+        }
+
+        .popupContent img {
+            max-width: 150vw;
+            max-height: 150vh;
+        }
+
 
     </style>
 </head>
@@ -346,6 +387,9 @@
             <a href="https://github.com/JTSALAH/Automated-GBIF-Species-Distribution-Modeling" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
             </a>
+            <div class="popup" onclick="showPopup('https://raw.githubusercontent.com/JTSALAH/Automated-GBIF-Species-Distribution-Modeling/main/AT_SDM.png')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
         </div>
 
         <div class="map-container">
@@ -386,7 +430,10 @@
             <a href="https://github.com/JTSALAH/R-Spatial-Autocorrelation-Analytics/tree/main" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
             </a>
-        </div>
+            <div class="popup" onclick="showPopup('https://raw.githubusercontent.com/JTSALAH/R-Spatial-Autocorrelation-Analytics/main/Example_Output/Kriged_AQI_EXP.png')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
+        </div> 
 
         <div class="map-container">
             <img src="https://raw.githubusercontent.com/JTSALAH/Restoration-Site-Selection-Shiny-App/main/Images/ParcelSelection.png" title="rshiny">
@@ -397,7 +444,7 @@
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
             </a>
             <a href="https://jtsalah.shinyapps.io/Restoration-Site-Selection-AHP/" target="_blank">
-                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/OPENICON.png" alt="Link" class="link-app">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/OPENICON.png" alt="Link" class="link-icon">
             </a>
         </div>
 
@@ -419,6 +466,9 @@
             <a href="https://github.com/JTSALAH/Batch-Landscape-Metrics" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
+            <div class="popup" onclick="showPopup('https://raw.githubusercontent.com/JTSALAH/Batch-Landscape-Metrics/main/LSM.png')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
         </div>
 
 
@@ -433,7 +483,6 @@
         </div>
 
 
-
         <div class="map-container">
             <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/HotSpot.png" title="HSA">
             <div class="top-left-label" style="color: #C7C6C1;">Hotspot Analysis Animation</div>
@@ -445,6 +494,9 @@
             <a href="https://github.com/JTSALAH/EDDMaps-HotSpot-Animation" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark-white.png" alt="Link" class="link-image">
             </a>
+            <div class="popup" onclick="showPopup('https://raw.githubusercontent.com/JTSALAH/R-HotSpot-Animation/main/animated_hotspot_map_with_bg.gif')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
         </div>
 
         <div class="map-container">
@@ -465,10 +517,10 @@
             <a href="https://github.com/JTSALAH/DEM-Rayshader-Visualization" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
+            <div class="popup" onclick="showPopup('https://github.com/JTSALAH/DEM-Rayshader-Visualization/blob/main/Render_Examples/DEM_Circle_Animation.gif?raw=true')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
         </div>
-
-
-
 
         <div class="map-container" id="Personal">
             <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/PG.png" alt="LSM">
@@ -477,6 +529,9 @@
             <a href="https://github.com/JTSALAH/Python-DEM-to-Point-Cloud" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
+            <div class="popup" onclick="showPopup('https://github.com/JTSALAH/DEM-to-Point-Cloud/blob/main/Example_Renders/Port_Gamble.png?raw=true')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
         </div>
 
         <div class="map-container">
@@ -486,6 +541,9 @@
             <a href="https://github.com/JTSALAH/Python-DEM-to-Point-Cloud" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
+            <div class="popup" onclick="showPopup('https://raw.githubusercontent.com/JTSALAH/DEM-to-Point-Cloud/main/Example_Renders/Astoria.png?raw=true')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
         </div>
 
         <div class="map-container">
@@ -495,7 +553,20 @@
             <a href="https://github.com/JTSALAH/Python-DEM-to-Point-Cloud" target="_blank">
                 <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/github-mark.png" alt="Link" class="link-image">
             </a>
+            <div class="popup" onclick="showPopup('https://github.com/JTSALAH/DEM-to-Point-Cloud/blob/main/Example_Renders/Point_Reyes.png?raw=true')">
+                <img src="https://raw.githubusercontent.com/JTSALAH/JTSALAH.github.io/main/IMAGES/POPUPICON.png" alt="Open Popup" class="link-icon">
+            </div>
         </div>
+
+        <div id="popupContainer" class="hidden">
+            <div class="overlay"></div>
+            <div class="popupContent">
+                <img src="" alt="Popup Image" id="popupImage">
+            </div>
+        </div>
+
+
+        
 
         <div class="map-container" id="Research">
             <div class="circular-image">
@@ -583,5 +654,29 @@
     
         // Adjust height on window resize or zoom
         window.onresize = adjustBlackBoxHeight;
+
+
+        function showPopup(imageUrl) {
+            var popupImage = document.getElementById('popupImage');
+            popupImage.onload = function() {
+                adjustImageSize(this);
+            };
+            popupImage.src = imageUrl;
+            document.getElementById('popupContainer').classList.remove('hidden');
+        }
+
+        function adjustImageSize(img) {
+            let maxWidth = window.innerWidth * 0.8; // 80% of viewport width
+            let maxHeight = window.innerHeight * 0.8; // 80% of viewport height
+            let ratio = Math.min(maxWidth / img.naturalWidth, maxHeight / img.naturalHeight);
+            img.style.width = (img.naturalWidth * ratio) + 'px';
+            img.style.height = (img.naturalHeight * ratio) + 'px';
+        }
+
+        document.getElementById('popupContainer').addEventListener('click', function(event) {
+            if (event.target === this || event.target.classList.contains('overlay')) {
+                this.classList.add('hidden');
+            }
+        });
     </script>
 </html>
